@@ -1,5 +1,7 @@
 package homeWork_12;
 
+import java.util.Objects;
+
 public class Book {
 
     private String bookName;
@@ -31,21 +33,30 @@ public class Book {
 
     /*
         Добавлено : toString, equals, hashCode
+
+        upd1 : заменил их через Generate
     */
 
+    @Override
     public String toString() {
-        return "\"" + bookName + "\" " + this.author.toString() + " - " + publicationYear;
+        return "Book{" +
+                "bookName='" + bookName + '\'' +
+                ", author=" + author +
+                ", publicationYear=" + publicationYear +
+                '}';
     }
 
-    public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Book book = (Book) other;
-        return toString().equals(other.toString());
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return publicationYear == book.publicationYear && bookName.equals(book.bookName) && author.equals(book.author);
     }
+
+    @Override
     public int hashCode() {
-        return java.util.Objects.hash(toString());
+        return Objects.hash(bookName, author, publicationYear);
     }
 
 }

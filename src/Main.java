@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Author> authors = new ArrayList<>();
-
         authors.add(new Author("Herman", "Melville"));
         authors.add(new Author("Leo", "Tolstoy"));
 
